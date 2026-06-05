@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-heading: var(--font-sans);
+    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-foreground: var(--foreground);
+    --color-background: var(--background);
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+    --radius-4xl: calc(var(--radius) * 2.6);
+    /* MixSound brand ramp */
+    --color-brand-500: var(--brand-500);
+}
+
+/*
+ * MixSound is a dark-only product, so the brand palette lives in both :root
+ * and .dark. Tokens map to the Figma design system:
+ *   base #101012 · primary-500 #FF2D9A · white #FFFFFF · radius 8px.
+ */
+:root {
+    --background: #101012;
+    --foreground: #ffffff;
+    --card: #18181b;
+    --card-foreground: #ffffff;
+    --popover: #18181b;
+    --popover-foreground: #ffffff;
+    --primary: #ff2d9a;
+    --primary-foreground: #ffffff;
+    --brand-500: #ff2d9a;
+    --secondary: #26262b;
+    --secondary-foreground: #ffffff;
+    --muted: #26262b;
+    --muted-foreground: #b4b4bb;
+    --accent: #26262b;
+    --accent-foreground: #ffffff;
+    --destructive: #ef4444;
+    --border: rgba(255, 255, 255, 0.12);
+    --input: rgba(255, 255, 255, 0.12);
+    --ring: #ff2d9a;
+    --chart-1: #ff2d9a;
+    --chart-2: #c32678;
+    --chart-3: #881f56;
+    --chart-4: #6a1b45;
+    --chart-5: #4c1734;
+    --radius: 0.5rem;
+    --sidebar: #18181b;
+    --sidebar-foreground: #ffffff;
+    --sidebar-primary: #ff2d9a;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #26262b;
+    --sidebar-accent-foreground: #ffffff;
+    --sidebar-border: rgba(255, 255, 255, 0.12);
+    --sidebar-ring: #ff2d9a;
+}
+
+.dark {
+    --background: #101012;
+    --foreground: #ffffff;
+    --card: #18181b;
+    --card-foreground: #ffffff;
+    --popover: #18181b;
+    --popover-foreground: #ffffff;
+    --primary: #ff2d9a;
+    --primary-foreground: #ffffff;
+    --brand-500: #ff2d9a;
+    --secondary: #26262b;
+    --secondary-foreground: #ffffff;
+    --muted: #26262b;
+    --muted-foreground: #b4b4bb;
+    --accent: #26262b;
+    --accent-foreground: #ffffff;
+    --destructive: #ef4444;
+    --border: rgba(255, 255, 255, 0.12);
+    --input: rgba(255, 255, 255, 0.12);
+    --ring: #ff2d9a;
+    --chart-1: #ff2d9a;
+    --chart-2: #c32678;
+    --chart-3: #881f56;
+    --chart-4: #6a1b45;
+    --chart-5: #4c1734;
+    --sidebar: #18181b;
+    --sidebar-foreground: #ffffff;
+    --sidebar-primary: #ff2d9a;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #26262b;
+    --sidebar-accent-foreground: #ffffff;
+    --sidebar-border: rgba(255, 255, 255, 0.12);
+    --sidebar-ring: #ff2d9a;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    }
+  body {
+    @apply bg-background text-foreground;
+    }
+  html {
+    @apply font-sans;
+    }
+}
