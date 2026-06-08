@@ -8,29 +8,46 @@ import { OrDivider, GoogleButton } from "@/components/SocialAuth";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 
-export function Login() {
-  const [identifier, setIdentifier] = useState("");
+const HINT = "A senha precisa conter no mínimo 8 caracteres.";
+
+export function Cadastro() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
   const [remember, setRemember] = useState(false);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    // TODO: authenticate against the login endpoint.
-    console.log("Login:", { identifier, password, remember });
+    // TODO: create the account via the sign-up endpoint.
+    console.log("Cadastro:", { name, email, password, confirm, remember });
   }
 
   return (
     <AuthSplitLayout>
       <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-        <h1 className="text-[40px] font-bold leading-none text-foreground">Login</h1>
+        <h1 className="text-[40px] font-bold leading-none text-foreground">Cadastre-se</h1>
 
-        <Field id="identifier" label="Nome de usuário ou e-mail">
+        <Field id="name" label="Nome completo">
           <AuthInput
-            id="identifier"
-            placeholder="@username"
-            autoComplete="username"
-            value={identifier}
-            onChange={(e) => setIdentifier(e.target.value)}
+            id="name"
+            placeholder="Your Name"
+            autoComplete="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="h-12"
+            required
+          />
+        </Field>
+
+        <Field id="email" label="E-mail">
+          <AuthInput
+            id="email"
+            type="email"
+            placeholder="example@email.com"
+            autoComplete="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="h-12"
             required
           />
@@ -41,8 +58,17 @@ export function Login() {
           label="Senha"
           value={password}
           onChange={setPassword}
-          hint="A senha precisa conter no mínimo 8 caracteres."
-          autoComplete="current-password"
+          hint={HINT}
+          labelClassName="text-sm"
+          inputClassName="h-12"
+        />
+
+        <PasswordField
+          id="confirm"
+          label="Confirme sua senha"
+          value={confirm}
+          onChange={setConfirm}
+          hint={HINT}
           labelClassName="text-sm"
           inputClassName="h-12"
         />
@@ -61,17 +87,17 @@ export function Login() {
         </div>
 
         <Button type="submit" size="xl" className="w-full">
-          Entrar
+          Cadastrar
         </Button>
 
         <OrDivider />
 
-        <GoogleButton>Entrar com Google</GoogleButton>
+        <GoogleButton>Cadastre-se com Google</GoogleButton>
 
         <p className="text-center text-sm text-foreground">
-          Não tem uma conta?{" "}
-          <Link to="/cadastro" className="text-primary hover:text-primary/80">
-            Cadastre-se
+          Já possuo uma conta?{" "}
+          <Link to="/login" className="text-primary hover:text-primary/80">
+            Entrar
           </Link>
         </p>
       </form>
