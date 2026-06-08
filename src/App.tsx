@@ -1,15 +1,17 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { Welcome } from "./screens/Welcome";
 import { Login } from "./screens/Login";
 import { Cadastro } from "./screens/Cadastro";
 import { ForgotPassword } from "./screens/ForgotPassword";
 import { ResetPassword } from "./screens/ResetPassword";
+import { Welcome } from "./screens/Welcome";
+import { Home } from "./screens/Home";
 
 export function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Welcome />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/recuperar-senha" element={<ForgotPassword />} />
