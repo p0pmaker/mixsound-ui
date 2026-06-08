@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthShell, Logo } from "@/components/AuthShell";
 import { BackLink } from "@/components/BackLink";
 import { AuthInput } from "@/components/AuthInput";
@@ -6,11 +7,13 @@ import { Button } from "@/components/ui/button";
 
 export function ForgotPassword() {
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     // TODO: call the password-reset request endpoint.
     console.log("Enviar link de redefinição para:", email);
+    navigate("/redefinir-senha");
   }
 
   return (

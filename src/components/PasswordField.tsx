@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { AuthInput } from "@/components/AuthInput";
+import { cn } from "@/lib/utils";
 
 type PasswordFieldProps = {
   id: string;
@@ -11,6 +12,8 @@ type PasswordFieldProps = {
   hint?: string;
   placeholder?: string;
   autoComplete?: string;
+  labelClassName?: string;
+  inputClassName?: string;
 };
 
 /** Labelled password input with a show/hide toggle and an optional hint. */
@@ -22,12 +25,14 @@ export function PasswordField({
   hint,
   placeholder = "•••••••••",
   autoComplete = "new-password",
+  labelClassName = "text-base",
+  inputClassName,
 }: PasswordFieldProps) {
   const [visible, setVisible] = useState(false);
 
   return (
     <div className="flex w-full flex-col gap-3">
-      <Label htmlFor={id} className="text-base font-bold text-foreground">
+      <Label htmlFor={id} className={cn("font-bold text-foreground", labelClassName)}>
         {label}
       </Label>
       <div className="relative">
@@ -38,7 +43,7 @@ export function PasswordField({
           placeholder={placeholder}
           autoComplete={autoComplete}
           onChange={(event) => onChange(event.target.value)}
-          className="h-14 pr-14"
+          className={cn("h-14 pr-14", inputClassName)}
           required
         />
         <button

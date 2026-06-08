@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Avatar } from "@/components/ui/avatar";
 import type { Person } from "@/lib/home-mocks";
 import { cn } from "@/lib/utils";
@@ -15,10 +16,13 @@ export function UserHeader({
   className,
   ariaLabel,
 }: UserHeaderProps) {
+  const navigate = useNavigate();
+
   return (
     <button
       type="button"
       aria-label={ariaLabel ?? `Abrir perfil de ${person.name}`}
+      onClick={() => navigate("/friend-perfil")}
       className={cn(
         "flex w-full cursor-pointer items-center gap-3 text-left focus-visible:outline-none",
         className
