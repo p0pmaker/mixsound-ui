@@ -12,20 +12,17 @@ export function Welcome() {
   const navigate = useNavigate();
 
   return (
-    <main className="relative min-h-svh overflow-hidden bg-background">
-      {/* Top-left pink glow panel */}
+    <main className="relative h-screen overflow-hidden bg-background">
       <div
         className="pointer-events-none absolute left-0 top-0 h-[42%] w-[62%]"
         style={{ background: HERO_GLOW }}
       />
 
-      {/* Bottom-left tagline */}
-      <div className="absolute bottom-20 left-[88px]">
-        <Tagline className="text-[40px]" />
+      <div className="absolute bottom-[120px] left-[120px]">
+        <Tagline className="text-[56px]" />
       </div>
 
-      {/* Right-side welcome + actions */}
-      <div className="absolute right-[90px] top-[62%] flex w-[230px] -translate-y-1/2 flex-col gap-7">
+      <div className="absolute bottom-[120px] right-[120px] flex w-[260px] flex-col gap-7">
         <img src={logomark} alt="MixSound" className="h-32 w-auto self-center" />
         <h1 className="text-2xl font-bold text-foreground">Bem-vindo(a)!</h1>
         <div className="flex flex-col gap-4">

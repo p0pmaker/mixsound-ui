@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthSplitLayout } from "@/components/AuthSplitLayout";
 import { Field } from "@/components/Field";
 import { AuthInput } from "@/components/AuthInput";
@@ -11,6 +11,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 const HINT = "A senha precisa conter no mínimo 8 caracteres.";
 
 export function Cadastro() {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,8 +20,7 @@ export function Cadastro() {
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    // TODO: create the account via the sign-up endpoint.
-    console.log("Cadastro:", { name, email, password, confirm, remember });
+    navigate("/home");
   }
 
   return (

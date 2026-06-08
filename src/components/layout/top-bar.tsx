@@ -1,4 +1,5 @@
 import { Search } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import logoSrc from "../../assets/logo.svg";
 
@@ -15,22 +16,22 @@ export function TopBar() {
               className="h-10 rounded-lg border-border bg-transparent pl-9 text-sm placeholder:text-muted-foreground"
             />
           </div>
-          <a
-            href="#"
+          <Link
+            to="/home"
             aria-label="MixSound"
             className="ml-auto hidden shrink-0 transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 sm:block xl:hidden"
           >
             <img src={logoSrc} alt="MixSound" className="h-6 w-auto md:h-7" />
-          </a>
+          </Link>
         </div>
 
-        <a
-          href="#"
+        <Link
+          to="/home"
           aria-label="MixSound"
           className="hidden shrink-0 items-center justify-end transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 xl:flex"
         >
           <img src={logoSrc} alt="MixSound" className="h-7 w-auto" />
-        </a>
+        </Link>
       </div>
     </header>
   );

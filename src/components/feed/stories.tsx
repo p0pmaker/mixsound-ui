@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Plus } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { Avatar } from "@/components/ui/avatar";
 import { stories, currentUser } from "@/lib/home-mocks";
 import { cn } from "@/lib/utils";
@@ -7,6 +8,7 @@ import { cn } from "@/lib/utils";
 const SCROLL_RATIO = 0.7;
 
 export function Stories() {
+  const navigate = useNavigate();
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
@@ -74,6 +76,7 @@ export function Stories() {
             key={story.id}
             type="button"
             aria-label={`Ver story de ${story.person.name}`}
+            onClick={() => navigate("/perfil-amigo")}
             className="group flex shrink-0 cursor-pointer flex-col items-center gap-1.5 focus-visible:outline-none"
           >
             <span

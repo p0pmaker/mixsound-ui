@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthSplitLayout } from "@/components/AuthSplitLayout";
 import { Field } from "@/components/Field";
 import { AuthInput } from "@/components/AuthInput";
@@ -9,14 +9,14 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 
 export function Login() {
+  const navigate = useNavigate();
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(false);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    // TODO: authenticate against the login endpoint.
-    console.log("Login:", { identifier, password, remember });
+    navigate("/home");
   }
 
   return (

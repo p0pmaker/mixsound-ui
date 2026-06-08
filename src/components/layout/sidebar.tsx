@@ -1,4 +1,5 @@
 import { Bell, Home, PlusSquare, Rss, Settings, type LucideIcon } from "lucide-react";
+import { Link } from "react-router-dom";
 import iconSrc from "../../assets/icon.png";
 import { Avatar } from "@/components/ui/avatar";
 import { currentUser } from "@/lib/home-mocks";
@@ -33,13 +34,13 @@ export function Sidebar() {
 function DesktopSidebar() {
   return (
     <aside className="fixed inset-y-0 left-0 z-30 hidden h-dvh w-20 flex-col items-center border-r border-border bg-background md:flex">
-      <a
-        href="#"
+      <Link
+        to="/home"
         aria-label="Página inicial"
         className="flex h-20 w-full shrink-0 items-center justify-center transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
       >
         <img src={iconSrc} alt="MixSound" className="h-8 w-8 object-contain" />
-      </a>
+      </Link>
 
       <nav className="flex min-h-0 flex-1 flex-col items-center justify-center gap-1 py-2">
         {NAV_ITEMS.map(({ id, label, icon: Icon, active }) => (

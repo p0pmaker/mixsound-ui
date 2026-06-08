@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import { Avatar } from "@/components/ui/avatar";
 import { suggestions } from "@/lib/home-mocks";
 
 export function Suggestions() {
+  const navigate = useNavigate();
   return (
     <section className="overflow-hidden rounded-2xl border border-border bg-card">
       <header className="px-4 pt-4">
@@ -19,6 +21,7 @@ export function Suggestions() {
             <button
               type="button"
               aria-label={`Abrir perfil de ${person.name}`}
+              onClick={() => navigate("/perfil-amigo")}
               className="flex min-w-0 flex-1 cursor-pointer items-center gap-3 text-left focus-visible:outline-none"
             >
               <Avatar name={person.name} src={person.avatar} size={36} />
