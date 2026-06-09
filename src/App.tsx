@@ -5,6 +5,7 @@ import { ForgotPassword } from "./screens/ForgotPassword";
 import { ResetPassword } from "./screens/ResetPassword";
 import { Welcome } from "./screens/Welcome";
 import { Home } from "./screens/Home";
+import { Messages } from "./screens/Messages";
 import { FriendProfile } from "./screens/FriendProfile";
 
 export function App() {
@@ -13,6 +14,7 @@ export function App() {
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/mensagens" element={<Messages />} />
         <Route path="/perfil-amigo" element={<FriendProfile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />

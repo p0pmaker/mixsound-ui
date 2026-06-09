@@ -17,13 +17,13 @@ export function MiniPlayer() {
         <button
           type="button"
           aria-label={isPlaying ? "Pausar" : "Reproduzir"}
-          className="text-[#e5e5e5] transition-colors hover:text-white"
+          className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#e5e5e5] text-[#484848] transition-colors hover:bg-white"
           onClick={() => setIsPlaying((p) => !p)}
         >
           {isPlaying ? (
-            <Pause className="h-6 w-6 fill-current" />
+            <Pause className="h-4 w-4 fill-current" />
           ) : (
-            <Play className="h-6 w-6 fill-current" />
+            <Play className="h-4 w-4 fill-current" />
           )}
         </button>
         <button
