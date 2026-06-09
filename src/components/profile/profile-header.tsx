@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { StatPill } from "@/components/ui/stat-pill";
 
@@ -42,10 +43,11 @@ export function ProfileHeader({ profile }: { profile: Profile }) {
           + Adicionar
         </Button>
         <Button
+          asChild
           variant="outline"
           className="rounded border-[#ababab] px-10 text-[#d8d8d8] hover:border-primary hover:text-primary"
         >
-          Enviar mensagem
+          <Link to="/mensagens">Enviar mensagem</Link>
         </Button>
         <Button className="rounded px-10 font-bold text-[#d8d8d8]">
           Remix

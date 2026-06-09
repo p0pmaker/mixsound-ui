@@ -20,7 +20,7 @@ export function TabStrip({ tabs, activeId, onChange }: TabStripProps) {
             "h-6 rounded px-12 text-xs font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
             activeId === id
               ? "bg-[#ababab] text-[#101012]"
-              : "border border-[#ababab] text-[#d8d8d8] hover:border-primary hover:text-primary"
+              : "border border-[#ababab] text-[#d8d8d8] hover:border-primary hover:bg-primary hover:text-primary-foreground"
           )}
         >
           {label}

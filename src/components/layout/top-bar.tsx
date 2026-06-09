@@ -1,5 +1,6 @@
 import { Search } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import logoSrc from "../../assets/logo.svg";
 
@@ -16,6 +17,9 @@ export function TopBar() {
               className="h-10 rounded-lg border-border bg-transparent pl-9 text-sm placeholder:text-muted-foreground"
             />
           </div>
+          <Button className="hidden h-10 shrink-0 rounded-lg px-6 font-bold sm:inline-flex">
+            Publicar
+          </Button>
           <Link
             to="/home"
             aria-label="MixSound"

@@ -1,4 +1,5 @@
 import { ChevronUp, MessageSquare } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Avatar } from "@/components/ui/avatar";
 import { suggestions } from "@/lib/home-mocks";
 
@@ -6,8 +7,8 @@ export function MessagesWidget() {
   const preview = suggestions[0];
   return (
     <div className="pointer-events-none fixed bottom-4 right-4 z-30 hidden md:bottom-6 md:right-6 md:block">
-      <button
-        type="button"
+      <Link
+        to="/mensagens"
         aria-label="Abrir mensagens"
         className="group pointer-events-auto flex w-[260px] cursor-pointer items-center gap-3 rounded-2xl border border-border bg-card px-3 py-2.5 text-left shadow-xl shadow-black/40 backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-black/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
       >
@@ -22,7 +23,7 @@ export function MessagesWidget() {
           </span>
         </span>
         <ChevronUp className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:-translate-y-0.5" />
-      </button>
+      </Link>
     </div>
   );
 }
