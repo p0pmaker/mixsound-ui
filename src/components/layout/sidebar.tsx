@@ -128,8 +128,8 @@ function DesktopSidebar({
             }
           />
         ))}
-        <button
-          type="button"
+        <Link
+          to="/perfil"
           aria-label="Perfil"
           className={cn(NAV_ITEM_BASE, "h-12 w-12")}
         >
@@ -138,7 +138,7 @@ function DesktopSidebar({
             src={currentUser.avatar}
             size={24}
           />
-        </button>
+        </Link>
       </nav>
 
       <div className="flex w-full shrink-0 flex-col items-center border-t border-border pt-4 pb-[max(1.5rem,env(safe-area-inset-bottom,0px))]">
@@ -181,8 +181,8 @@ function MobileNav({
           }
         />
       ))}
-      <button
-        type="button"
+      <Link
+        to="/perfil"
         aria-label="Perfil"
         className={cn(NAV_ITEM_BASE, "h-11 w-11")}
       >
@@ -191,7 +191,7 @@ function MobileNav({
           src={currentUser.avatar}
           size={20}
         />
-      </button>
+      </Link>
       <button
         type="button"
         aria-label="Configurações"

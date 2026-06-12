@@ -7,6 +7,7 @@ import { Welcome } from "./screens/Welcome";
 import { Home } from "./screens/Home";
 import { Messages } from "./screens/Messages";
 import { FriendProfile } from "./screens/FriendProfile";
+import { MyProfile } from "./screens/MyProfile";
 
 export function App() {
   return (
@@ -16,6 +17,7 @@ export function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/mensagens" element={<Messages />} />
         <Route path="/perfil-amigo" element={<FriendProfile />} />
+        <Route path="/perfil" element={<MyProfile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/recuperar-senha" element={<ForgotPassword />} />
