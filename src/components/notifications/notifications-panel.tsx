@@ -46,7 +46,7 @@ export function NotificationsPanel({ open, onClose }: NotificationsPanelProps) {
       <div
         aria-hidden
         onClick={onClose}
-        className="fixed left-0 right-0 top-0 bottom-16 z-[35] bg-black/50 md:bottom-0 md:left-20"
+        className="fixed left-0 right-0 top-0 bottom-16 z-[35] cursor-pointer bg-black/50 md:bottom-0 md:left-20"
       />
       <section
         role="dialog"

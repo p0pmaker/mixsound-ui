@@ -70,10 +70,10 @@ export type FeedItem =
 const avatar = (seed: string, size = 160) =>
   `https://i.pravatar.cc/${size}?u=mixsound-${seed}`;
 
-const photo = (seed: string, w: number, h: number) =>
+export const photo = (seed: string, w: number, h: number) =>
   `https://picsum.photos/seed/mixsound-${seed}/${w}/${h}`;
 
-function generatePeaks(seed: string, count: number): number[] {
+export function generatePeaks(seed: string, count: number): number[] {
   let h = 0;
   for (let i = 0; i < seed.length; i++) {
     h = (h * 31 + seed.charCodeAt(i)) | 0;
@@ -89,7 +89,7 @@ function generatePeaks(seed: string, count: number): number[] {
   return peaks;
 }
 
-const diego: Person = {
+export const diego: Person = {
   id: "p-diego",
   name: "Diego Antunes",
   handle: "diegoantunes",
@@ -97,7 +97,7 @@ const diego: Person = {
   avatar: avatar("diego-antunes"),
 };
 
-const mario: Person = {
+export const mario: Person = {
   id: "p-mario",
   name: "Mario Garcia",
   handle: "mariogarcia",
@@ -105,7 +105,7 @@ const mario: Person = {
   avatar: avatar("mario-garcia"),
 };
 
-const maria: Person = {
+export const maria: Person = {
   id: "p-maria",
   name: "Maria Lima",
   handle: "marialima",

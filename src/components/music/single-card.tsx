@@ -26,7 +26,7 @@ export function SingleCard({ single }: { single: SingleItem }) {
         <button
           type="button"
           aria-label={`Remix ${single.title}`}
-          className="shrink-0 transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:rounded-full"
+          className="shrink-0 cursor-pointer transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:rounded-full"
         >
         <img src={remixIconSrc} alt="" className="h-[30px] w-[30px]" />  
         </button>

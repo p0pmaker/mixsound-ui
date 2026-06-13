@@ -12,7 +12,12 @@ export type Profile = {
   avatar: string;
 };
 
-export function ProfileHeader({ profile }: { profile: Profile }) {
+type ProfileHeaderProps = {
+  profile: Profile;
+  variant?: "friend" | "own";
+};
+
+export function ProfileHeader({ profile, variant = "friend" }: ProfileHeaderProps) {
   return (
     <section className="flex flex-col gap-5">
       <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start">
@@ -36,22 +41,38 @@ export function ProfileHeader({ profile }: { profile: Profile }) {
       </div>
 
       <div className="flex flex-wrap justify-center gap-3">
-        <Button
-          variant="outline"
-          className="rounded border-[#ababab] px-10 text-[#d8d8d8] hover:border-primary hover:text-primary"
-        >
-          + Adicionar
-        </Button>
-        <Button
-          asChild
-          variant="outline"
-          className="rounded border-[#ababab] px-10 text-[#d8d8d8] hover:border-primary hover:text-primary"
-        >
-          <Link to="/mensagens">Enviar mensagem</Link>
-        </Button>
-        <Button className="rounded px-10 font-bold text-[#d8d8d8]">
-          Remix
-        </Button>
+        {variant === "friend" ? (
+          <>
+            <Button
+              variant="outline"
+              className="rounded border-[#ababab] px-10 text-[#d8d8d8] hover:border-primary hover:text-primary"
+            >
+              + Adicionar
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              className="rounded border-[#ababab] px-10 text-[#d8d8d8] hover:border-primary hover:text-primary"
+            >
+              <Link to="/mensagens">Enviar mensagem</Link>
+            </Button>
+            <Button className="rounded px-10 font-bold text-[#d8d8d8]">
+              Remix
+            </Button>
+          </>
+        ) : (
+          <>
+            <Button
+              variant="outline"
+              className="rounded border-[#ababab] px-10 text-[#d8d8d8] hover:border-primary hover:text-primary"
+            >
+              Editar Perfil
+            </Button>
+            <Button className="rounded px-10 font-bold text-[#d8d8d8]">
+              Meus Remixes
+            </Button>
+          </>
+        )}
       </div>
     </section>
   );
