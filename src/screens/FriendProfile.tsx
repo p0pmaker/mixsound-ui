@@ -1,5 +1,11 @@
 import { ProfileLayout } from "@/components/profile/profile-layout";
-import { friendProfile, latestRelease, singles } from "@/lib/profile-mocks";
+import {
+  friendProfile,
+  latestRelease,
+  singles,
+  friendPublicacoes,
+  friendRemixes,
+} from "@/lib/profile-mocks";
 
 export function FriendProfile() {
   return (
@@ -8,6 +14,8 @@ export function FriendProfile() {
       headerVariant="friend"
       latestRelease={latestRelease}
       singles={singles}
+      publicacoes={friendPublicacoes}
+      remixes={friendRemixes}
     />
   );
 }

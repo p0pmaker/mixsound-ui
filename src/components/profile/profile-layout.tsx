@@ -9,13 +9,21 @@ import { ProfileHeader, type Profile } from "@/components/profile/profile-header
 import { ReleaseCard, type Release } from "@/components/music/release-card";
 import { SingleCard, type SingleItem } from "@/components/music/single-card";
 import { TabStrip, type TabItem } from "@/components/ui/tab-strip";
+import { MusicPost } from "@/components/feed/music-post";
+import { ImagePost } from "@/components/feed/image-post";
+import { TextPost } from "@/components/feed/text-post";
+import { RemixPost } from "@/components/feed/remix-post";
+import type { FeedItem, RemixFeedItem } from "@/lib/home-mocks";
+
+type IconTab = "radar" | "catalog" | "remix";
 
 type ProfileLayoutProps = {
   profile: Profile;
   headerVariant?: "friend" | "own";
   latestRelease: Release;
   singles: SingleItem[];
-  tabs?: TabItem[];
+  publicacoes: FeedItem[];
+  remixes: RemixFeedItem[];
 };
 
 const DEFAULT_TABS: TabItem[] = [
@@ -24,14 +32,22 @@ const DEFAULT_TABS: TabItem[] = [
   { id: "albums", label: "Álbuns" },
 ];
 
+const iconTabs: { id: IconTab; label: string; src: string; alt: string; cls: string }[] = [
+  { id: "radar", label: "Radar", src: soundRadarSrc, alt: "", cls: "h-[17px] w-auto" },
+  { id: "catalog", label: "Catálogo", src: soundCatalogSrc, alt: "", cls: "h-[17px] w-auto" },
+  { id: "remix", label: "Remix", src: soundRemixSrc, alt: "", cls: "h-[18px] w-auto" },
+];
+
 export function ProfileLayout({
   profile,
   headerVariant = "friend",
   latestRelease,
   singles,
-  tabs = DEFAULT_TABS,
+  publicacoes,
+  remixes,
 }: ProfileLayoutProps) {
-  const [activeTab, setActiveTab] = useState(tabs[0]?.id ?? "");
+  const [activeIconTab, setActiveIconTab] = useState<IconTab>("radar");
+  const [subTab, setSubTab] = useState(DEFAULT_TABS[0]?.id ?? "");
 
   return (
     <div className="min-h-svh bg-background text-foreground">
@@ -49,51 +65,78 @@ export function ProfileLayout({
             </section>
 
             <div className="mt-6 flex justify-center gap-10 border-b border-border">
-              <button
-                type="button"
-                aria-label="Radar"
-                className="relative pb-3 opacity-100"
-              >
-                <img src={soundRadarSrc} alt="" className="h-[17px] w-auto brightness-[10]" />
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full bg-white" />
-              </button>
-              <button
-                type="button"
-                aria-label="Catálogo"
-                className="pb-3 opacity-50 transition-opacity hover:opacity-100"
-              >
-                <img src={soundCatalogSrc} alt="" className="h-[17px] w-auto" />
-              </button>
-              <button
-                type="button"
-                aria-label="Remix"
-                className="pb-3 opacity-50 transition-opacity hover:opacity-100"
-              >
-                <img src={soundRemixSrc} alt="" className="h-[18px] w-auto" />
-              </button>
+              {iconTabs.map((tab) => {
+                const active = activeIconTab === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    aria-label={tab.label}
+                    onClick={() => setActiveIconTab(tab.id)}
+                    className={`relative pb-3 transition-opacity ${
+                      active ? "opacity-100" : "opacity-50 hover:opacity-100"
+                    }`}
+                  >
+                    <img
+                      src={tab.src}
+                      alt=""
+                      className={`${tab.cls} brightness-[10]`}
+                    />
+                    {active && (
+                      <span className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full bg-white" />
+                    )}
+                  </button>
+                );
+              })}
             </div>
 
             <div className="mt-4">
-              <TabStrip tabs={tabs} activeId={activeTab} onChange={setActiveTab} />
-            </div>
-
-            <div className="mt-4">
-              {activeTab === "singles" && (
-                <div className="grid grid-cols-2 gap-[32px] sm:grid-cols-3">
-                  {singles.map((single) => (
-                    <SingleCard key={single.id} single={single} />
-                  ))}
+              {activeIconTab === "radar" && (
+                <>
+                  <TabStrip tabs={DEFAULT_TABS} activeId={subTab} onChange={setSubTab} />
+                  <div className="mt-4">
+                    {subTab === "singles" && (
+                      <div className="grid grid-cols-2 gap-[32px] sm:grid-cols-3">
+                        {singles.map((single) => (
+                          <SingleCard key={single.id} single={single} />
+                        ))}
+                      </div>
+                    )}
+                    {subTab === "eps" && (
+                      <p className="py-12 text-center text-sm text-muted-foreground">
+                        Nenhum EP disponível.
+                      </p>
+                    )}
+                    {subTab === "albums" && (
+                      <p className="py-12 text-center text-sm text-muted-foreground">
+                        Nenhum álbum disponível.
+                      </p>
+                    )}
+                  </div>
+                </>
+              )}
+              {activeIconTab === "catalog" && (
+                <div className="flex flex-col gap-4">
+                  {publicacoes.map((item) => {
+                    switch (item.kind) {
+                      case "music":
+                        return <MusicPost key={item.id} item={item} />;
+                      case "image":
+                        return <ImagePost key={item.id} item={item} />;
+                      case "text":
+                        return <TextPost key={item.id} item={item} />;
+                      case "remix":
+                        return null;
+                    }
+                  })}
                 </div>
               )}
-              {activeTab === "eps" && (
-                <p className="py-12 text-center text-sm text-muted-foreground">
-                  Nenhum EP disponível.
-                </p>
-              )}
-              {activeTab === "albums" && (
-                <p className="py-12 text-center text-sm text-muted-foreground">
-                  Nenhum álbum disponível.
-                </p>
+              {activeIconTab === "remix" && (
+                <div className="flex flex-col gap-4">
+                  {remixes.map((item) => (
+                    <RemixPost key={item.id} item={item} />
+                  ))}
+                </div>
               )}
             </div>
           </div>
