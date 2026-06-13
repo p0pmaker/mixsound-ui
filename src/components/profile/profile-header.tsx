@@ -24,7 +24,7 @@ export function ProfileHeader({ profile, variant = "friend" }: ProfileHeaderProp
         <img
           src={profile.avatar}
           alt={profile.name}
-          className="h-42 w-42 shrink-0 rounded-full object-cover"
+          className="h-32 w-32 shrink-0 rounded-full object-cover sm:h-40 sm:w-40"
         />
         <div className="flex flex-col gap-2 text-center sm:text-left">
           <div className="flex flex-col gap-0.5">
@@ -32,7 +32,7 @@ export function ProfileHeader({ profile, variant = "friend" }: ProfileHeaderProp
             <p className="text-sm text-foreground/80">{profile.handle}</p>
           </div>
           <p className="text-xs text-[#797979]">{profile.profession}</p>
-          <p className="max-w-[284px] text-sm text-[#d8d8d8]">{profile.bio}</p>
+          <p className="text-sm text-[#d8d8d8]">{profile.bio}</p>
           <div className="flex flex-wrap justify-center gap-2 sm:justify-start">
             <StatPill count={profile.followers} label="seguidores" />
             <StatPill count={profile.following} label="seguindo" />
