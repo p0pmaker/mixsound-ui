@@ -73,7 +73,7 @@ export function ProfileLayout({
                     type="button"
                     aria-label={tab.label}
                     onClick={() => setActiveIconTab(tab.id)}
-                    className={`relative pb-3 transition-opacity ${
+                    className={`relative cursor-pointer pb-3 transition-opacity ${
                       active ? "opacity-100" : "opacity-50 hover:opacity-100"
                     }`}
                   >

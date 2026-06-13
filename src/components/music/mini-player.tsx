@@ -10,14 +10,14 @@ export function MiniPlayer() {
         <button
           type="button"
           aria-label="Faixa anterior"
-          className="text-[#e5e5e5] transition-colors hover:text-white"
+          className="cursor-pointer text-[#e5e5e5] transition-colors hover:text-white"
         >
           <SkipBack className="h-5 w-5 fill-current" />
         </button>
         <button
           type="button"
           aria-label={isPlaying ? "Pausar" : "Reproduzir"}
-          className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#e5e5e5] text-[#484848] transition-colors hover:bg-white"
+          className="inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-[#e5e5e5] text-[#484848] transition-colors hover:bg-white"
           onClick={() => setIsPlaying((p) => !p)}
         >
           {isPlaying ? (
@@ -29,7 +29,7 @@ export function MiniPlayer() {
         <button
           type="button"
           aria-label="Próxima faixa"
-          className="text-[#e5e5e5] transition-colors hover:text-white"
+          className="cursor-pointer text-[#e5e5e5] transition-colors hover:text-white"
         >
           <SkipForward className="h-5 w-5 fill-current" />
         </button>

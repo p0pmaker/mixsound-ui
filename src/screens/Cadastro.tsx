@@ -81,7 +81,7 @@ export function Cadastro() {
             />
             Lembre-se de mim
           </label>
-          <Link to="/recuperar-senha" className="text-sm text-primary hover:text-primary/80">
+          <Link to="/recuperar-senha" className="cursor-pointer text-sm text-primary hover:text-primary/80">
             Esqueceu a senha?
           </Link>
         </div>
@@ -96,7 +96,7 @@ export function Cadastro() {
 
         <p className="text-center text-sm text-foreground">
           Já possuo uma conta?{" "}
-          <Link to="/login" className="text-primary hover:text-primary/80">
+          <Link to="/login" className="cursor-pointer text-primary hover:text-primary/80">
             Entrar
           </Link>
         </p>

@@ -55,7 +55,7 @@ export function Login() {
             />
             Lembre-se de mim
           </label>
-          <Link to="/recuperar-senha" className="text-sm text-primary hover:text-primary/80">
+          <Link to="/recuperar-senha" className="cursor-pointer text-sm text-primary hover:text-primary/80">
             Esqueceu a senha?
           </Link>
         </div>
@@ -70,7 +70,7 @@ export function Login() {
 
         <p className="text-center text-sm text-foreground">
           Não tem uma conta?{" "}
-          <Link to="/cadastro" className="text-primary hover:text-primary/80">
+          <Link to="/cadastro" className="cursor-pointer text-primary hover:text-primary/80">
             Cadastre-se
           </Link>
         </p>
