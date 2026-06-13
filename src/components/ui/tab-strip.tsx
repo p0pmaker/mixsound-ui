@@ -17,7 +17,7 @@ export function TabStrip({ tabs, activeId, onChange }: TabStripProps) {
           type="button"
           onClick={() => onChange(id)}
           className={cn(
-            "h-6 cursor-pointer rounded px-12 text-xs font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
+            "h-6 cursor-pointer rounded px-4 text-xs font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 sm:px-6 md:px-10",
             activeId === id
               ? "bg-[#ababab] text-[#101012]"
               : "border border-[#ababab] text-[#d8d8d8] hover:border-primary hover:bg-primary hover:text-primary-foreground"

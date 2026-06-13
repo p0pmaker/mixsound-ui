@@ -20,7 +20,7 @@ export function SingleCard({ single }: { single: SingleItem }) {
 
       <div className="flex items-center justify-between gap-2">
         <div>
-          <p className="text-lg font-bold leading-tight">{single.title}</p>
+            <p className="text-sm font-bold leading-tight sm:text-base md:text-lg">{single.title}</p>
           <p className="text-xs text-[#bcbcbc]">{single.year}</p>
         </div>
         <button

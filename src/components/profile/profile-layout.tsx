@@ -55,7 +55,7 @@ export function ProfileLayout({
       <TopBar />
 
       <main className="pb-20 pt-16 md:pb-0 md:pl-20 md:pt-20">
-        <div className="mx-auto max-w-[986px] rounded-2xl border border-[#5e5e5e] px-4 py-8">
+        <div className="mx-auto max-w-[986px] px-3 py-4 sm:rounded-2xl sm:border sm:border-[#5e5e5e] sm:px-6 sm:py-6 md:px-8 md:py-8">
           <div className="mx-auto w-full max-w-[571px]">
             <ProfileHeader profile={profile} variant={headerVariant} />
 
@@ -64,7 +64,7 @@ export function ProfileLayout({
               <ReleaseCard release={latestRelease} />
             </section>
 
-            <div className="mt-6 flex justify-center gap-10 border-b border-border">
+            <div className="mt-6 flex justify-center gap-6 border-b border-border sm:gap-10">
               {iconTabs.map((tab) => {
                 const active = activeIconTab === tab.id;
                 return (
@@ -96,7 +96,7 @@ export function ProfileLayout({
                   <TabStrip tabs={DEFAULT_TABS} activeId={subTab} onChange={setSubTab} />
                   <div className="mt-4">
                     {subTab === "singles" && (
-                      <div className="grid grid-cols-2 gap-[32px] sm:grid-cols-3">
+                      <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 sm:grid-cols-3">
                         {singles.map((single) => (
                           <SingleCard key={single.id} single={single} />
                         ))}
