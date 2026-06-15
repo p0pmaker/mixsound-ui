@@ -10,6 +10,7 @@ import {
   NotificationIcon,
 } from "@/components/icons/nav-icons";
 import { NotificationsPanel } from "@/components/notifications/notifications-panel";
+import { usePublish } from "@/components/publish/publish-context";
 import { currentUser } from "@/lib/home-mocks";
 import { cn } from "@/lib/utils";
 
@@ -41,11 +42,12 @@ export function Sidebar() {
     open: notificationsOpen,
     onToggle: () => setNotificationsOpen((open) => !open),
   };
+  const publish = usePublish();
 
   return (
     <>
-      <DesktopSidebar notifications={notifications} />
-      <MobileNav notifications={notifications} />
+      <DesktopSidebar notifications={notifications} onPublish={publish.openModal} />
+      <MobileNav notifications={notifications} onPublish={publish.openModal} />
       <NotificationsPanel
         open={notificationsOpen}
         onClose={() => setNotificationsOpen(false)}
@@ -97,8 +99,10 @@ function NavButton({
 
 function DesktopSidebar({
   notifications,
+  onPublish,
 }: {
   notifications: NotificationsControl;
+  onPublish: () => void;
 }) {
   return (
     <aside className="fixed inset-y-0 left-0 z-30 hidden h-dvh w-20 flex-col items-center border-r border-border bg-background md:flex">
@@ -111,23 +115,27 @@ function DesktopSidebar({
       </Link>
 
       <nav className="flex min-h-0 flex-1 flex-col items-center justify-center gap-1 py-2">
-        {NAV_ITEMS.map((item) => (
-          <NavButton
-            key={item.id}
-            item={item}
-            className="h-12 w-12"
-            onClick={
-              item.id === "notifications" ? notifications.onToggle : undefined
-            }
-            forceActive={
-              item.id === "notifications"
-                ? notifications.open
-                : notifications.open
-                  ? false
-                  : undefined
-            }
-          />
-        ))}
+          {NAV_ITEMS.map((item) => (
+            <NavButton
+              key={item.id}
+              item={item}
+              className="h-12 w-12"
+              onClick={
+                item.id === "notifications"
+                  ? notifications.onToggle
+                  : item.id === "create"
+                    ? onPublish
+                    : undefined
+              }
+              forceActive={
+                item.id === "notifications"
+                  ? notifications.open
+                  : notifications.open
+                    ? false
+                    : undefined
+              }
+            />
+          ))}
         <Link
           to="/perfil"
           aria-label="Perfil"
@@ -156,8 +164,10 @@ function DesktopSidebar({
 
 function MobileNav({
   notifications,
+  onPublish,
 }: {
   notifications: NotificationsControl;
+  onPublish: () => void;
 }) {
   return (
     <nav
@@ -170,7 +180,11 @@ function MobileNav({
           item={item}
           className="h-11 w-11"
           onClick={
-            item.id === "notifications" ? notifications.onToggle : undefined
+            item.id === "notifications"
+              ? notifications.onToggle
+              : item.id === "create"
+                ? onPublish
+                : undefined
           }
           forceActive={
             item.id === "notifications"
