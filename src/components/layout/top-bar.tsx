@@ -2,9 +2,11 @@ import { Search } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { usePublish } from "@/components/publish/publish-context";
 import logoSrc from "../../assets/logo.svg";
 
 export function TopBar() {
+  const publish = usePublish();
   return (
     <header className="fixed inset-x-0 top-0 z-20 h-16 border-b border-border bg-background md:left-20 md:h-20">
       <div className="grid h-full grid-cols-1 items-center gap-4 px-3 sm:px-4 md:gap-6 md:px-6 xl:grid-cols-[minmax(0,640px)_300px] xl:justify-center xl:gap-10 xl:px-10 2xl:gap-14 2xl:px-12">
@@ -17,7 +19,10 @@ export function TopBar() {
               className="h-10 rounded-lg border-border bg-transparent pl-9 text-sm placeholder:text-muted-foreground"
             />
           </div>
-          <Button className="hidden h-10 shrink-0 rounded-lg px-6 font-bold sm:inline-flex">
+          <Button
+            className="hidden h-10 shrink-0 rounded-lg px-6 font-bold sm:inline-flex"
+            onClick={publish.openModal}
+          >
             Publicar
           </Button>
           <Link
