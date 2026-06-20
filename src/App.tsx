@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Login } from "./screens/Login";
 import { Cadastro } from "./screens/Cadastro";
 import { ForgotPassword } from "./screens/ForgotPassword";
@@ -13,7 +13,7 @@ import { PublishModal } from "@/components/publish/publish-modal";
 
 export function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <PublishProvider>
         <Routes>
           <Route path="/" element={<Welcome />} />
@@ -29,6 +29,6 @@ export function App() {
         </Routes>
         <PublishModal />
       </PublishProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }

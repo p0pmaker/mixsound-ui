@@ -7,6 +7,7 @@ import tailwindcss from "@tailwindcss/vite";
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
+  base: "/mixsound-ui/",
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
